@@ -6,6 +6,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 <link rel='stylesheet' href='resources/bootstrap/bootstrap.css'
 	type='text/css' media='all'>
 <script	src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -24,7 +25,12 @@ html {
 }
 
 body {
-  height: 100%;
+  	height: 100%;
+  	background-image:url('resources/different/longboard1.jpg');
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Bree Serif', serif;
 }
 
 .container {
@@ -35,16 +41,19 @@ body {
 div.tab {
     float: left;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
-    width: 30%;
+    background-color: rgba(241, 241, 241, 0.9);
+    /*background-color: #f1f1f1;*/
+    width: 20%;
     height: 100%;
- 
+ 	/*opacity: 0.9;*/
+ 	/*border:1px solid white;*/
 }
 
 /* Style the buttons inside the tab */
 div.tab button {
     display: block;
-    background-color: inherit;
+    /*background-color: inherit;*/
+    background-color: rgba(210, 210, 210, 0.8);
     color: black;
     padding: 22px 16px;
     width: 100%;
@@ -52,18 +61,38 @@ div.tab button {
     outline: none;
     text-align: left;
     cursor: pointer;
+    /*transition: 0.3s;*/
     transition: 0.3s;
     margin-top: 10px;
+    /*border: 1px solid grey;*/
+    box-shadow: 3px 3px 10px #888888;
+}
+
+div.tab button:first-child {
+  margin-top: 6px
 }
 
 /* Change background color of buttons on hover */
 div.tab button:hover {
-    background-color: #ddd;
+    /*background-color: #ddd;*/
+    background-color: rgba(204, 204, 204, 1);
+    border-color: grey;
+    transition: 0.8s;
 }
 
 /* Create an active/current "tab button" class */
 div.tab button.active {
-    background-color: #ccc;
+	background-color: rgba(170, 170, 170, 1);
+    /*background-color: #ccc;*/
+}
+
+/*div.tab .active {
+    background-color: rgba(241, 241, 241, 1);
+  
+}*/
+#Account-Settings {
+  display: block;
+
 }
 
 /* Style the tab content */
@@ -72,13 +101,16 @@ div.tab button.active {
     float: left;
     padding: 0px 12px;
     border: 1px solid #ccc;
-    width: 70%;
+    width: 80%;
     border-left: none;
     height: 100%;
+    /*background-color:#fff;
+    opacity: 0.6;*/
+    background-color:rgba(255, 255, 255, 0.8);
 }
 
 .navbar{
-height: 5%;
+	height: 5%;
 }
 
 .main-field {
@@ -99,12 +131,14 @@ function openCity(evt, cityName) {
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
+    
     }
 
     // Get all elements with class="tablinks" and remove the class "active"
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
+
     }
 
     // Show the current tab, and add an "active" class to the link that opened
@@ -156,22 +190,35 @@ function openCity(evt, cityName) {
 </nav>
 <div class="main-field">
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Account Settings')">Account Settings</button>
+  <button class="tablinks active" onclick="openCity(event, 'Account-Settings')">Account Settings</button>
   <button class="tablinks" onclick="openCity(event, 'Inventory')">Inventory</button>
-  <button class="tablinks" onclick="openCity(event, 'Order History')">Order History</button>
+  <button class="tablinks" onclick="openCity(event, 'Order-History')">Order History</button>
 </div>
 
-<div id="Account Settings" class="tabcontent">
+<div id="Account-Settings" class="tabcontent">
   <h3>Account Settings</h3>
-  <p>London is the capital city of England.</p>
+  <h4>Change password:</h4>
+  <form action="MainServlet" method="POST">
+  <div class="form-group">
+  	<div class="col-xs-2">
+	  <label for="usr">Old password:</label>
+	  <input type="text" class="form-control" id="usr">
+	  <label for="pwd">New password:</label>
+	  <input type="password" class="form-control" id="pwd">
+	  <label for="pwd">Repeat new password:</label>
+	  <input type="password" class="form-control" id="pwd">
+	  </div>
+  </div>
+  </form>
 </div>
+
 
 <div id="Inventory" class="tabcontent">
   <h3>Inventory</h3>
   <p>Paris is the capital of France.</p> 
 </div>
 
-<div id="Order History" class="tabcontent">
+<div id="Order-History" class="tabcontent">
   <h3>Order History</h3>
   <p>Tokyo is the capital of Japan.</p>
 </div>

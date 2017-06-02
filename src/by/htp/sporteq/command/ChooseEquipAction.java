@@ -7,19 +7,19 @@ import by.htp.sporteq.dao.EquipDAOImpl;
 
 import static by.htp.sporteq.util.ConstantValue.*;
 
-public class MakeOrderAction implements CommandAction{
+public class ChooseEquipAction implements CommandAction{
 	
-	private EquipDAOImpl equipService;
+	private EquipDAOImpl equipDAO;
 	
-	public MakeOrderAction() {
-		equipService = new EquipDAOImpl();
+	public ChooseEquipAction() {
+		equipDAO = new EquipDAOImpl();
 	}
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 			
-		request.setAttribute("map", equipService.showEquip(request.getParameter("bike")));
+		request.setAttribute("map", equipDAO.showEquipByClass(request.getParameter("category")));
 		
 		return PAGE_EXACT_ORDER;
 	}

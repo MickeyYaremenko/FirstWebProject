@@ -1,22 +1,26 @@
 package by.htp.sporteq.entity;
 
+import java.util.Map;
+
 public class Equipment {
 
 	private Long equipID;
 	private String name;
 	private double price;
+	private Map<String, String> properties;
 
 	public Equipment() {
 		super();
 	}
 
-	public Equipment(Long id, String name, double price) {
+	public Equipment(Long id, String name, double price, Map<String, String> prop) {
 		super();
 		this.equipID = id;
 		this.name = name;
 		this.price = price;
+		this.properties = prop;
 	}
-	
+
 	public Equipment(String name, double price) {
 		super();
 		this.name = name;
@@ -47,15 +51,24 @@ public class Equipment {
 		this.equipID = equipID;
 	}
 
+	public Map<String, String> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(Map<String, String> map) {
+		this.properties = map;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (equipID ^ (equipID >>> 32));
+		result = prime * result + ((equipID == null) ? 0 : equipID.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((properties == null) ? 0 : properties.hashCode());
 		return result;
 	}
 
@@ -68,7 +81,10 @@ public class Equipment {
 		if (getClass() != obj.getClass())
 			return false;
 		Equipment other = (Equipment) obj;
-		if (equipID != other.equipID)
+		if (equipID == null) {
+			if (other.equipID != null)
+				return false;
+		} else if (!equipID.equals(other.equipID))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -77,12 +93,18 @@ public class Equipment {
 			return false;
 		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
 			return false;
+		if (properties == null) {
+			if (other.properties != null)
+				return false;
+		} else if (!properties.equals(other.properties))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Equipment [equipID=" + equipID + ", name=" + name + ", price=" + price + "]";
+		return "Equipment [equipID=" + equipID + ", name=" + name + ", price=" + price + ", properties=" + properties
+				+ "]";
 	}
 
 }

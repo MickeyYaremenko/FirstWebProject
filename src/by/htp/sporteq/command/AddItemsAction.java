@@ -22,9 +22,8 @@ public class AddItemsAction implements CommandAction {
 			cart =  (ArrayList<String>) session.getAttribute("Cart");
 		}
 		
-		String[] cart2 = request.getParameterValues("items");
-		System.out.println("smth");
-		Collections.addAll(cart, cart2);
+		String[] cartTemp = request.getParameterValues("items");
+		Collections.addAll(cart, cartTemp);
 
 		session.setAttribute("Cart", cart);
 		String page = PAGE_SHOPPING_CART;

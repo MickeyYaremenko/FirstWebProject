@@ -5,19 +5,19 @@ public class CommandChooser {
 	public static CommandAction chooseAction(String action){
 		switch (action) {
 		case ACTION_AUTHORIZE:
-			System.out.println("Login action" + action);
+			System.out.println("Login action " + action);
 			return new LoginCommandAction();
-		case ACTION_MAKE_ORDER:
-			System.out.println("Create order action");
-			return new OrderCreateAction();
-		case ACTION_EXACT_ORDER:
-			System.out.println("Exact order action" + action);
-			return new MakeOrderAction();
+		case ACTION_CONFIRM_ORDER:
+			System.out.println("Create order action ");
+			return new ConfirmOrderAction();
+		case ACTION_CHOOSE_EQUIP:
+			System.out.println("Choose equip action " + action);
+			return new ChooseEquipAction();
 		case ACTION_ADD_ITEMS:
-			System.out.println("Add items to a cart action" + action);
+			System.out.println("Add items to a cart action " + action);
 			return new AddItemsAction();
 		case ACTION_OPEN_USER_ACCOUNT:
-			System.out.println("Open user account" + action);
+			System.out.println("Open user account " + action);
 			return new UserAccountAction();
 		}
 		

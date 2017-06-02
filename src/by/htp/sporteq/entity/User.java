@@ -2,7 +2,7 @@ package by.htp.sporteq.entity;
 
 public class User {
 
-	private Long userID;
+	private int userID;
 	private String login;
 	private String password;
 	private boolean role;
@@ -10,7 +10,7 @@ public class User {
 	public User() {
 	}
 
-	public User(Long id, String login, String password, boolean role) {
+	public User(int id, String login, String password, boolean role) {
 		super();
 		this.userID = id;
 		this.login = login;
@@ -42,11 +42,11 @@ public class User {
 		this.role = role;
 	}
 
-	public long getUserID() {
+	public int getUserID() {
 		return userID;
 	}
 
-	public void setUserID(long userID) {
+	public void setUserID(int userID) {
 		this.userID = userID;
 	}
 
